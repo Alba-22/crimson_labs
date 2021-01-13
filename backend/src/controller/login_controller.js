@@ -12,7 +12,9 @@ exports.auth = async (request, response, _) => {
   contract.hasMinLenght(request.body.password, 8, "Password need to have 8 characters");
 
   if (!contract.isValid()) {
-    response.status(400).send(contract.errors()).end();
+    response.status(400).send({
+      errors: contract.errors()
+    });
     return;
   }
 

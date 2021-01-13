@@ -13,7 +13,9 @@ exports.create = async (request, response, _) => {
   contract.isEmail(request.body.email, "Invalid Email");
 
   if (!contract.isValid()) {
-    response.status(400).send(contract.errors()).end();
+    response.status(400).send({
+      errors: contract.errors()
+    });
     return;
   }
 

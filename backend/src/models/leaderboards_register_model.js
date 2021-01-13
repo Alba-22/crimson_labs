@@ -4,11 +4,6 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
-  name: {
-    type: String,
-    required: true,
-    trim: true,
-  },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
@@ -16,7 +11,7 @@ const schema = new Schema({
   },
   map: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Map",
+    ref: "Maps",
     required: true,
   },
   round: {
@@ -38,4 +33,4 @@ const schema = new Schema({
   }
 });
 
-module.exports = mongoose.model("LeaderboardRegister", schema);
+module.exports = mongoose.model("LeaderboardsRegister", schema);

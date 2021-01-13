@@ -13,13 +13,14 @@ mongoose.connect(config.connectionString);
 // Carrega os Models
 const UserModel = require("./models/user_model");
 const MapsModel = require("./models/maps_model");
-const LeaderboardRegisterModel = require("./models/leaderboard_register_model");
+const LeaderboardRegisterModel = require("./models/leaderboards_register_model");
 
 // Carrega as Rotas
 const indexRoute = require("./routes/index_route");
 const usersRoute = require("./routes/users_route");
 const loginRoute = require("./routes/login_route");
 const mapsRoute = require("./routes/maps_route");
+const leaderboardsRoute = require("./routes/leaderboards_route");
 
 app.use(bodyParser.json({
   limit: "5mb"
@@ -38,5 +39,6 @@ app.use("/", indexRoute);
 app.use("/users", usersRoute);
 app.use("/login", loginRoute);
 app.use("/maps", mapsRoute);
+app.use("/leaderboards", leaderboardsRoute);
 
 module.exports = app;
