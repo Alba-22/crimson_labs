@@ -17,6 +17,7 @@ const LeaderboardRegisterModel = require("./models/leaderboard_register_model");
 
 // Carrega as Rotas
 const indexRoute = require("./routes/index_route");
+const usersRoute = require("./routes/users_route");
 
 app.use(bodyParser.json({
   limit: "5mb"
@@ -32,5 +33,6 @@ app.use((_, response, next) => {
 })
 
 app.use("/", indexRoute);
+app.use("/users", usersRoute);
 
 module.exports = app;
