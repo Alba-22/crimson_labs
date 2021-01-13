@@ -17,3 +17,10 @@ exports.getByEmail = async (email) => {
     email: email
   });
 }
+
+exports.authenticate = async (data) => {
+  return await User.findOne({
+    email: data.email,
+    password: data.password,
+  });
+}

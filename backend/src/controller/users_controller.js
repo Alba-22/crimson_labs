@@ -18,6 +18,15 @@ exports.create = async (request, response, _) => {
   }
 
   try {
+
+    let check = await repository.getByEmail(request.body.email);
+    if (check) {
+      response.status(409).send({
+        message: "User already exists",
+      });
+    return;
+    }
+
     await repository.create({
       name: request.body.name,
       email: request.body.email,
@@ -25,12 +34,12 @@ exports.create = async (request, response, _) => {
       password: md5(request.body.password + global.PRIVATE_KEY),
     });
     response.status(201).send({
-      messsage: "User created successfully",
+      message: "User created successfully",
     });
   }
   catch (error) {
     response.status(500).send({
-      messsage: "Error while creating user",
+      message: "Error while creating user",
       error: error,
     });
   }
