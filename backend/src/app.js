@@ -11,6 +11,9 @@ const app = express();
 mongoose.connect(config.connectionString);
 
 // Carrega os Models
+const UserModel = require("./models/user_model");
+const MapModel = require("./models/map_model");
+const LeaderboardRegisterModel = require("./models/leaderboard_register_model");
 
 // Carrega as Rotas
 const indexRoute = require("./routes/index_route");
