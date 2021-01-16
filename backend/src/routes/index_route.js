@@ -7,7 +7,7 @@ router.get(
   "/",
   (_, response, __) => {
     response.status(200).send({
-      name: "Zombies Leaderboards API",
+      name: "Crimson Labs API",
       version: "0.0.1",
     });
   }

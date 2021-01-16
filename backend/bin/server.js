@@ -2,7 +2,7 @@
 
 const app = require("../src/app");
 const http = require("http");
-const debug = require("debug")("zombiesleaderboards:server");
+const debug = require("debug")("crimsonlabs:server");
 
 const port = normalizePort(process.env.PORT || '0115');
 app.set("port", port);
