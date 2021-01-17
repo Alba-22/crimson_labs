@@ -20,6 +20,7 @@ class AppWidget extends StatelessWidget {
           accentColor: Color(0xFFED224B),
           fontFamily: "Gotham",
           backgroundColor: Colors.white,
+          scaffoldBackgroundColor: Colors.white,
         ),
         initialRoute: '/',
         onGenerateRoute: Modular.generateRoute,

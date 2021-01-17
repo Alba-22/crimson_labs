@@ -25,7 +25,8 @@ class _SplashPageState extends ModularState<SplashPage, SplashController> {
     return Scaffold(
       body: Container(
         color: Color(0xFF121212),
-        child: Stack(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Center(
               child: Image.asset(
@@ -33,15 +34,10 @@ class _SplashPageState extends ModularState<SplashPage, SplashController> {
                 scale: 2,
               ),
             ),
-            Center(
-              child: Container(
-                height: 300,
-                width: 300,
-                child: CircularProgressIndicator(
-                  strokeWidth: 10,
-                  valueColor: AlwaysStoppedAnimation(Theme.of(context).primaryColor),
-                ),
-              ),
+            SizedBox(height: 10),
+            CircularProgressIndicator(
+              strokeWidth: 4,
+              valueColor: AlwaysStoppedAnimation(Theme.of(context).primaryColor),
             ),
           ],
         ),
