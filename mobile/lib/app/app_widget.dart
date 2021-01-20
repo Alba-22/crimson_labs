@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:get/get.dart';
 
 class AppWidget extends StatelessWidget {
   @override
@@ -11,7 +12,7 @@ class AppWidget extends StatelessWidget {
           FocusManager.instance.primaryFocus.unfocus();
         }
       },
-      child: MaterialApp(
+      child: GetMaterialApp(
         navigatorKey: Modular.navigatorKey,
         debugShowCheckedModeBanner: false,
         title: 'Crimson Labs',

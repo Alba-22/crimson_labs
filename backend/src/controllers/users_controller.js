@@ -3,6 +3,7 @@
 const ValidationContract = require("../validators/validator");
 const repository = require("../repositories/users_repository");
 const md5 = require("md5");
+const authService = require("../services/auth_service");
 
 exports.create = async (request, response, _) => {
 
@@ -46,4 +47,27 @@ exports.create = async (request, response, _) => {
     });
   }
   
+}
+
+exports.getUserData = async (request, response, _) => {
+
+  try {
+    let token = request.body.token || request.query.token || request.headers["x-access-token"];
+    let tokenData = await authService.decodeToken(token);
+
+    let result = await repository.getById(tokenData.id);
+    response.status(200).send({
+      id: result._id,
+      name: result.name,
+      email: result.email,
+      country: result.country,
+    });
+  }
+  catch(error) {
+    response.status(500).send({
+      message: "Error while creating user",
+      error: error,
+    });
+  }
+
 }

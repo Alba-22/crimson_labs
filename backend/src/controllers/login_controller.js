@@ -38,11 +38,8 @@ exports.auth = async (request, response, _) => {
     })
     
     response.status(200).send({
+      id: user._id,
       token: token,
-      data: {
-        email: user.email,
-        name: user.name,
-      }
     });
   }
   catch (error) {

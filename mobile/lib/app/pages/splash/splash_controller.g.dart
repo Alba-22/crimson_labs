@@ -7,7 +7,7 @@ part of 'splash_controller.dart';
 // **************************************************************************
 
 final $SplashController = BindInject(
-  (i) => SplashController(),
+  (i) => SplashController(i<ILocalStorage>(), i<UserStore>()),
   singleton: true,
   lazy: true,
 );

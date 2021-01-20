@@ -5,5 +5,11 @@ class Paths {
 }
 
 class Api {
-  static const url = "localhost:0115";
+  static const url = "http://192.168.1.229:0115";
+}
+
+enum DialogType {
+  ok,
+  error,
+  info,
 }

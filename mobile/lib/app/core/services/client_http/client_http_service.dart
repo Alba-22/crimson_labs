@@ -1,5 +1,8 @@
 import 'package:dio/dio.dart';
 
+import 'package:crimson_labs/app/core/services/client_http/auth_interceptor.dart';
+import 'package:crimson_labs/app/core/services/local_storage/local_storage_interface.dart';
+
 import '../../models/reponse_model_http.dart';
 import 'client_http_interface.dart';
 
@@ -7,8 +10,9 @@ class ClientHttpService implements IClientHttp {
 
   String _baseURL;
   Dio _dio;
+  ILocalStorage _localStorage;
 
-  ClientHttpService(this._baseURL) {
+  ClientHttpService(this._baseURL, this._localStorage) {
     _dio = Dio(
       BaseOptions(
         baseUrl: _baseURL,
@@ -17,8 +21,9 @@ class ClientHttpService implements IClientHttp {
         validateStatus: (status) {
           return status <= 500;
         },
-      )
+      ),
     );
+    _dio.interceptors.add(AuthInterceptor(_localStorage));
   }
 
   @override

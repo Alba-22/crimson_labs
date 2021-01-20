@@ -10,6 +10,8 @@ class LoginField extends StatelessWidget {
   final TextInputType keyboardType;
   final bool obscure;
   final IconData icon;
+  final Function(String) validator;
+  final AutovalidateMode autovalidateMode;
 
   const LoginField({
     this.onChange,
@@ -18,7 +20,9 @@ class LoginField extends StatelessWidget {
     this.inputFormatters,
     this.keyboardType = TextInputType.text,
     this.obscure = false, 
-    this.icon,
+    this.icon, 
+    this.validator, 
+    this.autovalidateMode = AutovalidateMode.onUserInteraction,
   });
 
   @override
@@ -30,7 +34,10 @@ class LoginField extends StatelessWidget {
       keyboardType: keyboardType,
       obscureText: obscure,
       cursorColor: Theme.of(context).primaryColor,
+      validator: validator,
+      autovalidateMode: autovalidateMode,
       decoration: InputDecoration(
+        errorStyle: TextStyle(color: Colors.grey),
         prefixIcon: Icon(
           icon,
           color: Theme.of(context).primaryColor,
