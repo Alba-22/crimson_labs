@@ -64,7 +64,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                     title: "C.R.U.D. and Cart",
                     description: "Simple CRUD operations, forms and a cart system made with help of MobX.",
                     icon: FontAwesomeIcons.cartPlus,
-                    onTap: () => Modular.link.pushNamed("/crud"),
+                    onTap: () => Modular.link.pushNamed("/products"),
                   ),
                   HomeItemWidget(
                     title: "Images Operations",
