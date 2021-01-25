@@ -1,3 +1,5 @@
+import 'package:crimson_labs/app/modules/crud/crud_module.dart';
+
 import 'home_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 

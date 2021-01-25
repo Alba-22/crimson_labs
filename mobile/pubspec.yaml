@@ -29,6 +29,7 @@ dependencies:
   get: ^3.24.0
   mobx: ^1.2.1+4
   shared_preferences: ^0.5.12+4
+  font_awesome_flutter: ^8.11.0
 
 dev_dependencies:
   flutter_test:
@@ -51,5 +52,7 @@ flutter:
         - asset: lib/assets/fonts/Gotham-Medium.ttf
         - asset: lib/assets/fonts/Gotham-Light.ttf
           weight: 200
+        - asset: lib/assets/fonts/Gotham-Bold.ttf
+          weight: 600
         - asset: lib/assets/fonts/Gotham-Ultra.ttf
           weight: 800
