@@ -86,9 +86,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                     title: "Logout",
                     description: "Leave the app and finalize session.",
                     icon: Icons.logout,
-                    onTap: () {
-                      
-                    },
+                    onTap: () async => await controller.logout(),
                   ),
                 ],
               ),
