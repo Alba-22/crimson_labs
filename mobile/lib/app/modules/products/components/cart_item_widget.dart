@@ -1,17 +1,22 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:crimson_labs/app/modules/products/stores/cart_store.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 import 'package:crimson_labs/app/modules/products/models/product_response_model.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
-class ProductListItemWidget extends StatelessWidget {
+class CartItemWidget extends StatelessWidget {
+  final Product item;
+  final int index;
 
-  final Products item;
-
-  const ProductListItemWidget({
+  CartItemWidget({
     Key key,
     @required this.item,
+    @required this.index,
   }) : super(key: key);
+
+  final _cartStore = Modular.get<CartStore>();
 
   @override
   Widget build(BuildContext context) {
@@ -38,23 +43,25 @@ class ProductListItemWidget extends StatelessWidget {
                     "${item.title}",
                     maxLines: 2,
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 14,
                     ),
                   ),
                 ),
                 Container(
                   child: AutoSizeText(
-                    "\$${item.price.toStringAsFixed(2)}",
+                    "\$${item.price.toStringAsFixed(2)} per unit",
                     maxLines: 1,
                     style: TextStyle(
-                      color: Colors.grey[600]
+                      color: Colors.grey[600],
+                      fontSize: 12,
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ),
           GestureDetector(
+            onTap: () => _cartStore.decreaseQuantity(index),
             child: Container(
               height: 30,
               width: 30,
@@ -63,14 +70,25 @@ class ProductListItemWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Icon(
-                FontAwesomeIcons.cartPlus,
+                Icons.remove,
                 color: Colors.white,
-                size: 18,
               ),
             ),
           ),
-          SizedBox(width: 5),
+          Observer(builder: (_) {
+            return Container(
+              width: 25,
+              margin: EdgeInsets.symmetric(horizontal: 5),
+              child: Center(
+                child: AutoSizeText(
+                  "${_cartStore.cart[index].quantity}",
+                  maxLines: 1,
+                ),
+              ),
+            );
+          }),
           GestureDetector(
+            onTap: () => _cartStore.increaseQuantity(index),
             child: Container(
               height: 30,
               width: 30,
@@ -79,7 +97,7 @@ class ProductListItemWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Icon(
-                Icons.more_vert,
+                Icons.add,
                 color: Colors.white,
               ),
             ),

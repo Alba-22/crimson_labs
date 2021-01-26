@@ -48,7 +48,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             ),
             Container(
               child: AutoSizeText(
-                "This is just an testing app used purelly for learning purposes.",
+                "This is just an testing app used purely for learning purposes.",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 14,

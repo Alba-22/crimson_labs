@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:crimson_labs/app/core/components/appbar/custom_appbar.dart';
 import 'package:crimson_labs/app/core/components/buttons/main_button.dart';
-import 'package:crimson_labs/app/modules/products/pages/products_list/components/product_list_item_widget.dart';
+import 'package:crimson_labs/app/modules/products/components/product_list_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -23,25 +23,12 @@ class _ProductsListPageState extends ModularState<ProductsListPage, ProductsList
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: CustomAppBar(title: "Products"),
       body: Container(
         width: MediaQuery.of(context).size.width,
-        margin: EdgeInsets.symmetric(
-          horizontal: MediaQuery.of(context).size.width * 0.05,
-        ),
         padding: EdgeInsets.only(top: 5),
         child: Column(
           children: <Widget>[
-            Container(
-              alignment: Alignment.centerLeft,
-              child: AutoSizeText(
-                "Products",
-                maxLines: 1,
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-              ),
-            ),
             Expanded(
               child: Observer(
                 builder: (_) {
@@ -76,20 +63,52 @@ class _ProductsListPageState extends ModularState<ProductsListPage, ProductsList
                       ],
                     );
                   }
-                  return RefreshIndicator(
-                    onRefresh: controller.fetchProductList,
-                    child: ListView.builder(
-                      itemCount: controller.productList.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return ProductListItemWidget(
-                          item: controller.productList[index],
-                        );
-                      },
+                  return Container(
+                    margin: EdgeInsets.symmetric(
+                      horizontal: MediaQuery.of(context).size.width * 0.05,
+                    ),
+                    child: RefreshIndicator(
+                      onRefresh: controller.fetchProductList,
+                      child: ListView.builder(
+                        itemCount: controller.productList.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return ProductListItemWidget(
+                            item: controller.productList[index],
+                          );
+                        },
+                      ),
                     ),
                   );
                 }
               ),
-            )
+            ),
+            GestureDetector(
+              onTap: () {
+                Modular.to.pop();
+                Modular.link.pushNamed("/cart");
+              },
+              child: Container(
+                height: 40,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColor,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10),
+                  ),
+                ),
+                padding: EdgeInsets.all(10),
+                child: Center(
+                  child: AutoSizeText(
+                    "Go to Cart".toUpperCase(),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),

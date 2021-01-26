@@ -1,3 +1,4 @@
+import 'package:crimson_labs/app/modules/products/models/product_payload_model.dart';
 import 'package:flutter/foundation.dart';
 
 import 'package:crimson_labs/app/core/models/response_model.dart';
@@ -29,6 +30,26 @@ class ProductsRepository implements IProductsRepository {
     catch (error) {
       debugPrint("ProductsRepository getAllProducts Error");
       throw Exception("There was an server error while loading products.");
+    }
+  }
+
+  @override
+  Future<ResponseModel> addProduct(ProductPayloadModel payload) async {
+    try {
+      final response = await _clientHttp.post(
+        "/products",
+        data: payload.toJson(),
+        headers: {
+          "requiresToken": true
+        }
+      );
+      return ResponseModel(
+        statusCode: response.statusCode,
+      );
+    }
+    catch (error) {
+      debugPrint("ProductsRepository addProduct Error");
+      throw Exception("There was an server error while creating product.");
     }
   }
   

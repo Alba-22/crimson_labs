@@ -30,6 +30,7 @@ dependencies:
   mobx: ^1.2.1+4
   shared_preferences: ^0.5.12+4
   font_awesome_flutter: ^8.11.0
+  flutter_masked_text: ^0.8.0 
 
 dev_dependencies:
   flutter_test:

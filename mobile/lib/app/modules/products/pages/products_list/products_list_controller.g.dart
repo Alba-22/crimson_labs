@@ -19,11 +19,11 @@ final $ProductsListController = BindInject(
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$ProductsListController on _ProductsListControllerBase, Store {
-  Computed<ObservableList<Products>> _$productListComputed;
+  Computed<ObservableList<Product>> _$productListComputed;
 
   @override
-  ObservableList<Products> get productList => (_$productListComputed ??=
-          Computed<ObservableList<Products>>(() => super.productList,
+  ObservableList<Product> get productList => (_$productListComputed ??=
+          Computed<ObservableList<Product>>(() => super.productList,
               name: '_ProductsListControllerBase.productList'))
       .value;
   Computed<bool> _$productListLoadingComputed;
@@ -44,13 +44,13 @@ mixin _$ProductsListController on _ProductsListControllerBase, Store {
   final _$_productsAtom = Atom(name: '_ProductsListControllerBase._products');
 
   @override
-  ObservableList<Products> get _products {
+  ObservableList<Product> get _products {
     _$_productsAtom.reportRead();
     return super._products;
   }
 
   @override
-  set _products(ObservableList<Products> value) {
+  set _products(ObservableList<Product> value) {
     _$_productsAtom.reportWrite(value, super._products, () {
       super._products = value;
     });

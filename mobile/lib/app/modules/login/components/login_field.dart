@@ -37,6 +37,7 @@ class LoginField extends StatelessWidget {
       validator: validator,
       autovalidateMode: autovalidateMode,
       decoration: InputDecoration(
+        border: InputBorder.none,
         errorStyle: TextStyle(color: Colors.grey),
         prefixIcon: Icon(
           icon,

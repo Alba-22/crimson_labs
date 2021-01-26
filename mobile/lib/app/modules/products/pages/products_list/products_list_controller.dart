@@ -15,7 +15,7 @@ abstract class _ProductsListControllerBase with Store {
   _ProductsListControllerBase(this._crudRepository);
 
   @observable
-  ObservableList<Products> _products;
+  ObservableList<Product> _products;
 
   @observable
   bool _productListLoading = false;
@@ -43,7 +43,7 @@ abstract class _ProductsListControllerBase with Store {
   }
 
   @computed
-  ObservableList<Products> get productList => _products;
+  ObservableList<Product> get productList => _products;
 
   @computed
   bool get productListLoading => _productListLoading;
