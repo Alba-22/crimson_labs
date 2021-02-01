@@ -14,6 +14,7 @@ class LoginField extends StatelessWidget {
   final AutovalidateMode autovalidateMode;
 
   const LoginField({
+    Key key,
     this.onChange,
     this.controller,
     this.text = "",

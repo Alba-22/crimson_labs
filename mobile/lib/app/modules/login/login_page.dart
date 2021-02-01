@@ -50,6 +50,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                     child: Column(
                       children: [
                         LoginField(
+                          key: Key("LoginEmailField"),
                           icon: Icons.mail,
                           text: "E-mail",
                           controller: controller.emailController,
