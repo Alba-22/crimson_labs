@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 import 'package:crimson_labs/app/core/utils/constants.dart';
 
@@ -35,9 +36,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         "${Paths.icon}/crimson_logo.png",
         height: 40,
       ),
-      leading: Navigator.canPop(context)
+      leading: Modular.navigator.canPop()
       ? IconButton(
-        onPressed: () => Navigator.pop(context),
+        onPressed: () => Modular.to.pop(),
         icon: Icon(
           Icons.arrow_back_ios,
           color: Theme.of(context).primaryColor,

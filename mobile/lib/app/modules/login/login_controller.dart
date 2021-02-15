@@ -49,7 +49,7 @@ abstract class _LoginControllerBase with Store {
       await _localStorage.put("userId", loginResponse.data.id);
       final userData = await _userStore.loadUserInfo();
       if (userData) {
-        Modular.to.pushReplacementNamed("/home");
+        Get.offNamed("/home");
       }
       else {
         await Get.dialog(CommonDialog(

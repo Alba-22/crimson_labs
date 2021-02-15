@@ -1,4 +1,3 @@
-import 'package:flutter/services.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:get/get.dart';
 import 'package:mobx/mobx.dart';
@@ -26,7 +25,6 @@ abstract class _SplashControllerBase with Store {
     if (token != null && token != "") {
       Future.delayed(Duration(milliseconds: 1000))
       .then((value) async {
-        await SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom, SystemUiOverlay.top]);
         final userData = await _userStore.loadUserInfo();
         if (userData) {
           Modular.to.pushReplacementNamed("/home");
@@ -44,7 +42,6 @@ abstract class _SplashControllerBase with Store {
     else {
       Future.delayed(Duration(milliseconds: 1000))
       .then((value) async {
-        await SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom, SystemUiOverlay.top]);
         Modular.to.pushReplacementNamed("/login");
       });
     }

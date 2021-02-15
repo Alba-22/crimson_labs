@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:get/get.dart';
 import 'package:mobx/mobx.dart';
@@ -23,7 +24,7 @@ abstract class _HomeControllerBase with Store {
       onAccept: () async {
         await _localStorage.delete("token");
         await _localStorage.delete("userId");
-        Modular.to.pushReplacementNamed("/login");
+        Modular.to.pushNamedAndRemoveUntil("/login", ModalRoute.withName("/"));
       },
       onDeny: () {
         Modular.to.pop();
